@@ -1,0 +1,154 @@
+Stone Paper Scissor Game in cpp
+...............................
+#include <iostream>
+using namespace std;
+int ucount=0;
+int scount=0; 
+int tround;
+static int check;
+void result();
+void sps(int usern){
+    int nrand=rand()%3+1;
+    if(usern == nrand && usern==1){
+        cout<<"Stone and Stone,oops Draw :)\n";
+        check++;
+        
+    }
+    else if(usern == 1 && nrand == 2){
+        cout<<"Stone and Paper,I won! :)\n";
+        check++;
+        scount++;
+    }
+    else if(usern == 1 && nrand == 3){
+        cout<<"Stone and Scissor,This time you won!\n";
+        check++;
+        ucount++;
+    }
+    else if(usern == nrand && usern==2){
+        cout<<"Paper and Paper,oops Draw :)\n";
+        check++;
+    }
+    else if(usern == 2 && nrand == 1){
+        cout<<"Paper and Stone,This time you won!\n";
+        check++;
+        ucount++;
+    }
+    else if(usern == 2 && nrand == 3){
+        cout<<"Paper and Scissor,I won! better luck\n";
+        check++;
+        scount++;
+    }
+    else if(usern ==  nrand && usern==3){
+        cout<<"Scissor and Scissor,oops Draw :)\n";
+        check++;
+    }
+    else if(usern == 3 && nrand == 1){
+        cout<<"Scissor and Stone,I won! better luck\n";
+        check++;
+        scount++;
+    }
+    else if(usern == 3 && nrand == 2){
+        cout<<"Scissor and Paper,This time you won! \n";
+        check++;
+        ucount++;
+    }
+    else if(usern==4){
+        result();
+    }
+    if(check==tround){
+        cout<<"Its time for result\n";
+        result();
+    }
+}
+void result(){
+    if(check==0 && tround==0 ){
+        cout<<"Before game starts you leaved(cryingggggg)\n";
+        exit(0);
+    }
+    if(ucount==0 && scount==0){
+            cout<<"By god's grace we are equal. so next time we can see how is the winner";
+            exit(0);
+        }
+    if(check == tround){
+        // cout<<"Its time to leave,let see the result's:\n";
+        if(ucount>=scount){
+            cout<<"You won the Game by winning "<<ucount<<" times\n"<<"Shit next time i will try to win "<<"\n";
+            cout<<"Game over";
+            exit(0);
+        }
+        else{
+            cout<<"I won the Game by winning "<<scount<<" times,Try again to win me (Clap's)\n";
+            cout<<"Game over";
+            exit(0);
+        }
+        if(ucount==0 && scount==0){
+            cout<<"By god's grace we are equal. so next time we can see how is the winner";
+            exit(0);
+        }
+    }
+    if((check!=0 && tround!=0) && (check!=tround)){
+        cout<<"This is the current level:"<<check<<"\n";
+        cout<<"you are trying to exit the game without completion its okey byeeeeeeee\n";
+        exit(0);
+    }
+    exit(0);
+}
+    
+int main()
+{
+    cout<<"Welcome to Stone Paper Scissor game!\n";
+    cout<<"Please enter the total round for the game(negative number will not allowed)"<<"\n";
+    cout<<"Maximum round is 1-10(Minimum round is 3)\n";
+    cin>>tround;
+    if(tround<0){
+        lable:
+        cout<<"As mentioned above negative numbers are not allowed so please reenter the number:";
+        cin>>tround;
+        cout<<"\n";
+        if(tround<0)
+        goto lable;
+    }
+    if(tround%2==0){
+        if(tround>10)goto label1;
+        cout<<"You entered even number good but it is not far to calculate the round. so we are decrementing one round :) Njoy the game \n";
+        tround--;
+        cout<<"\n";
+    }
+    if(tround>10){
+        label1:
+        cout<<"Your input for the round is greater then Maximum. so please reenter the number which should be in given range:\n";
+        cin>>tround;
+        if(tround>10)
+        goto label1;
+    }
+    check=0;
+    int choice;
+    while(1){
+        cout<<"1.Stone"<<"\n";
+        cout<<"2.Paper"<<"\n";
+        cout<<"3.Scissor"<<"\n";
+        cout<<"4.End the game from current level"<<"\n";
+        cout<<"Enter the choice:";
+        cin>>choice;
+        switch(choice){
+            case 1:
+            sps(choice);
+            break;
+            case 2:
+            sps(choice);
+            break;
+            case 3:
+            sps(choice);
+            break;
+            case 4:
+            result();
+            break;
+            default:
+            cout<<"A fellow pls study the above lines,shit they are coming for me itself\n";
+            break;
+
+        }
+    
+    }
+}
+
