@@ -102,7 +102,7 @@ int main()
     cin>>tround;
     if(tround<0){
         lable:
-        cout<<"As mentioned above negative numbers are not allowed so please reenter the number:";
+        cout<<"As mentioned above negative numbers or zero are not allowed so please reenter the number:";
         cin>>tround;
         cout<<"\n";
         if(tround<0)
