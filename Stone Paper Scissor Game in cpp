@@ -98,7 +98,7 @@ int main()
 {
     cout<<"Welcome to Stone Paper Scissor game!\n";
     cout<<"Please enter the total round for the game(negative number will not allowed)"<<"\n";
-    cout<<"Maximum round is 1-10(Minimum round is 3)\n";
+    cout<<"Round is 1-10(Recommended Minimum round is 3)\n";
     cin>>tround;
     if(tround<=0){
         lable:
