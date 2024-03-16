@@ -100,7 +100,7 @@ int main()
     cout<<"Please enter the total round for the game(negative number will not allowed)"<<"\n";
     cout<<"Maximum round is 1-10(Minimum round is 3)\n";
     cin>>tround;
-    if(tround<0){
+    if(tround<=0){
         lable:
         cout<<"As mentioned above negative numbers or zero are not allowed so please reenter the number:";
         cin>>tround;
