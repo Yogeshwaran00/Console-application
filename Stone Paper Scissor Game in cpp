@@ -1,5 +1,6 @@
 Stone Paper Scissor Game in cpp
 ...............................
+
 #include <iostream>
 using namespace std;
 int ucount=0;
@@ -66,23 +67,24 @@ void result(){
         exit(0);
     }
     if(ucount==0 && scount==0){
-            cout<<"By god's grace we are equal. so next time we can see who is the winner";
+            cout<<"By god's grace we are equal. so next time we can see how is the winner";
             exit(0);
         }
     if(check == tround){
         // cout<<"Its time to leave,let see the result's:\n";
-        if(ucount>=scount){
+        if(ucount>scount){
             cout<<"You won the Game by winning "<<ucount<<" times\n"<<"Shit next time i will try to win "<<"\n";
             cout<<"Game over";
             exit(0);
         }
-        else{
+        else if(scount>ucount){
             cout<<"I won the Game by winning "<<scount<<" times,Try again to win me (Clap's)\n";
             cout<<"Game over";
             exit(0);
         }
-        if(ucount==0 && scount==0){
-            cout<<"By god's grace we are equal. so next time we can see who is the winner";
+        else{
+            cout<<"By god's grace we are equal. so next time we can see how is the winner";
+            cout<<"Game over";
             exit(0);
         }
     }
@@ -151,4 +153,3 @@ int main()
     
     }
 }
-
