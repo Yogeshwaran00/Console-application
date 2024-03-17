@@ -66,7 +66,7 @@ void result(){
         exit(0);
     }
     if(ucount==0 && scount==0){
-            cout<<"By god's grace we are equal. so next time we can see how is the winner";
+            cout<<"By god's grace we are equal. so next time we can see who is the winner";
             exit(0);
         }
     if(check == tround){
@@ -82,7 +82,7 @@ void result(){
             exit(0);
         }
         if(ucount==0 && scount==0){
-            cout<<"By god's grace we are equal. so next time we can see how is the winner";
+            cout<<"By god's grace we are equal. so next time we can see who is the winner";
             exit(0);
         }
     }
