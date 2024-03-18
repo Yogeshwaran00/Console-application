@@ -2,6 +2,7 @@ Stone Paper Scissor Game in cpp
 ...............................
 
 #include <iostream>
+#include<time.h>
 using namespace std;
 int ucount=0;
 int scount=0; 
@@ -9,6 +10,7 @@ int tround;
 static int check;
 void result();
 void sps(int usern){
+    srand(time(NULL));
     int nrand=rand()%3+1;
     if(usern == nrand && usern==1){
         cout<<"Stone and Stone,oops Draw :)\n";
