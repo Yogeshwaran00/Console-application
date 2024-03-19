@@ -1,0 +1,265 @@
+Jumble words in cpp
+...............................
+
+#include <iostream>
+#include<time.h>
+#include<vector>
+#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
+int choice;
+int score=0;
+vector<string>level{"water","programming","planet","matrix","software"};
+vector<string>level2{"genie","encyclopedia","diagonal"};
+vector<string>level3{"fart"};
+void easy();
+void medium();
+void hard();
+vector<string>vfind;
+vector<string>v2find;
+vector<string>v3find;
+int ecount=0;
+int mcount=0;
+int hcount=0;
+int dscore=0;
+void easy(){
+    label2:
+    srand(time(NULL));
+    int random=rand()%level.size();
+    string verify;
+    string userenter;
+    if (find(vfind.begin(),vfind.end(),level[random])==vfind.end()){
+    vfind.push_back(level[random]);
+    verify=level[random];
+    // cout<<verify;
+    int temp=1;
+    int i=verify.size()-1;
+    while(i>=temp){
+        if(temp>verify.size())break;
+        swap(verify[i],verify[temp]);
+        temp++;
+        i--;
+    }
+    cout<<"This is the word you need to find: ";
+    cout<<verify<<endl;
+    label3:
+    cout<<"Enter the word:";
+    cin>>userenter;
+    // cout<<endl;
+    if(find(level.begin(),level.end(),userenter)!= level.end()){//find(level.begin(), level.end(), userenter) != level.end()
+        ecount++;
+        score++;
+        cout<<"(Clap your self :).....)You found me....."<<endl;
+        if(ecount==level.size()){
+            cout<<"Aye human congrats, you are moving to the next level...at least you got promotion here hahahaha..."<<endl;
+            medium();
+            return ;
+        } 
+        cout<<"Super you unlocked the next level (if next press \"1\" else \"0\" to continue this level):";
+        int temp;
+        label4:
+        cin>>temp;
+        if(temp==0 || temp==1){
+            if(temp==1)medium();
+            else goto label2;
+        }
+        else{
+            cout<<"Atlest Please study here (see the above norms bruh...)"<<endl;
+            cout<<"Re-enter here:";
+            goto label4;
+        }
+    }
+    else{
+        cout<<"(Now i am become to Doctor mode) Sorry you tried but you can not find me try again...."<<endl;
+        goto label3;
+    }
+    // cout<<verify<<endl;
+    }
+    else{
+         goto label2;
+    }
+    
+
+}
+void medium(){
+    cout<<"Welcome to level->2"<<endl;
+    cout<<"you scored:"<<score<<endl;
+    label5:
+    srand(time(NULL));
+    int random=rand()%level2.size();
+    string verify;
+    string userenter;
+    if (find(v2find.begin(),v2find.end(),level2[random])==v2find.end()){
+    v2find.push_back(level2[random]);
+    verify=level2[random];
+    // cout<<verify;
+    int temp=2;
+    int i=verify.size()-1;
+    while(i>=temp){
+        if(temp>verify.size())break;
+        swap(verify[i],verify[temp]);
+        temp++;
+        i--;
+    }
+    cout<<"This is the word you need to find: ";
+    cout<<verify<<endl;
+    label6:
+    cout<<"Enter the word:";
+    cin>>userenter;
+    // cout<<endl;
+    if(find(level2.begin(),level2.end(),userenter)!= level2.end()){//find(level.begin(), level.end(), userenter) != level.end()
+        mcount++;
+        score++;
+        cout<<"(Clap your self :).....)You found me....."<<endl;
+        if(mcount==level2.size()){
+            cout<<"Sir you are incremented to next level"<<endl;
+            hard();
+            return ;
+        } 
+        cout<<"Super you unlocked the next level (if next press \"1\" else \"0\" to continue this level):";
+        int temp;
+        label7:
+        cin>>temp;
+        if(temp==0 || temp==1){
+            if(temp==1)hard();
+            else goto label5;
+        }
+        else{
+            cout<<"Atlest Please study here (see the above norms bruh...)"<<endl;
+            cout<<"Re-enter here:";
+            goto label7;
+        }
+    }
+    else{
+        cout<<"(Now i am become to Doctor mode) Sorry you tried but you can not find me try again...."<<endl;
+        goto label6;
+    }
+    // cout<<verify<<endl;
+    }
+    else{
+         goto label5;
+    }
+}
+void hard(){
+     cout<<"You are in final stage (do not raise your heart beat eeeee:)...)"<<endl;
+    label8:
+    srand(time(NULL));
+    int random=rand()%level3.size();
+    string verify;
+    string userenter;
+    if (find(v3find.begin(),v3find.end(),level3[random])==v3find.end()){
+    v3find.push_back(level3[random]);
+    verify=level3[random];
+    // cout<<verify;
+    int temp=3;
+    int i=verify.size()-1;
+    while(i>=temp){
+        if(temp>verify.size())break;
+        swap(verify[i],verify[temp]);
+        temp++;
+        i--;
+    }
+    cout<<"This is the word you need to find: ";
+    cout<<verify<<endl;
+    label9:
+    cout<<"Enter the word:";
+    cin>>userenter;
+    // cout<<endl;
+    if(find(level3.begin(),level3.end(),userenter)!= level3.end()){//find(level.begin(), level.end(), userenter) != level.end()
+        hcount++;
+        score++;
+        cout<<"(Clap your self :).....)You found me....."<<endl;
+        if(hcount==level3.size()){
+            cout<<"You are a theif taken all the point :)....score is:"<<score<<endl;
+            cout<<"Your Knowledge>>>>>>.....(Topper bruh you won)...."<<endl;
+            cout<<"Game over";
+            exit(0);
+        } 
+        cout<<"Super you unlocked the next level (if exit press \"1\" else \"0\" to continue this level):";
+        int temp;
+        label10:
+        cin>>temp;
+        if(temp==0 || temp==1){
+            if(temp==1)
+            {
+                cout<<"Upto points is "<<score<<endl;
+                cout<<"Try to come again to steal all my points byeeeeee";
+                exit(0);
+            }
+            else goto label8;
+        }
+        else{
+            cout<<"Atlest Please study here (see the above norms bruh...)"<<endl;
+            cout<<"Re-enter here:";
+            goto label10;
+        }
+    }
+    else{
+        cout<<"(Now i am become to Doctor mode) Sorry you tried but you can not find me try again...."<<endl;
+        dscore++;
+        if(dscore==2){
+            cout<<"You tried but.....so you got an special offer that is get some practic from 2nd level first..."<<endl;
+           exit(0);
+        }
+        goto label9;
+    }
+    // cout<<verify<<endl;
+    }
+    else{
+         goto label8;
+    }
+    
+}
+int main()
+{
+   cout<<"Welcome to the Word Jamble World game"<<endl;
+   cout<<"For each correct answer you score will be ++"<<endl;
+   while(1){
+       cout<<"1.Easy"<<endl;
+       cout<<"2.Level->2"<<endl;
+       cout<<"3.Hard than level->2"<<endl;
+       cout<<"4.To exit from game"<<endl;
+       label:
+       cout<<"Select the level:";
+       cin>>choice;
+       if(choice<=0 || choice>5){
+       cout<<"I know your brain is smarter than me but do not use it here. just see the norms above."<<endl;
+       goto label;
+       }
+       switch(choice){
+            case 1:
+            cout<<"welcome to Easy level....(This is the first step)"<<endl;
+            easy();
+            break;
+            case 2:
+            cout<<"Good Guts direct 2nd level"<<endl;
+            medium();
+            break;
+            case 3:
+            cout<<"Aye topper guy let's we can play :).."<<endl;
+            hard();
+            break;
+            case 4:
+            exit(0);
+            break;
+            default:
+            cout<<"Pls go to school and study from first class my friend (Read the above condition)"<<endl;
+            break;
+       }
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
