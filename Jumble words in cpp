@@ -142,6 +142,7 @@ void medium(){
 }
 void hard(){
      cout<<"You are in final stage (do not raise your heart beat eeeee:)...)"<<endl;
+     cout<<"you scored:"<<score<<endl;
     label8:
     srand(time(NULL));
     int random=rand()%level3.size();
@@ -248,6 +249,22 @@ int main()
        }
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
