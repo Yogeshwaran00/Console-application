@@ -152,7 +152,7 @@ void hard(){
     v3find.push_back(level3[random]);
     verify=level3[random];
     // cout<<verify;
-    int temp=3;
+    int temp=2;
     int i=verify.size()-1;
     while(i>=temp){
         if(temp>verify.size())break;
