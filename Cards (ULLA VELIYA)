@@ -1,0 +1,161 @@
+This is game is based on cards. it's a local game(ULLA VELIYA).
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include<time.h>
+#include<vector>
+#include<algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<string>com{"cA","c2","c3","c4","c5","c6","c7","c8","c9","c10","cJ","cQ","cK"
+,"dA","d2","d3","d4","d5","d6","d7","d8","d9","d10","dJ","dQ","dK",
+"hA","h2","h3","h4","h5","h6","h7","h8","h9","h10","hJ","hQ","hK",
+"sA","s2","s3","s4","s5","s6","s7","s8","s9","s10","sJ","sQ","sK"};
+vector<string>player;
+queue<string>hold;
+int ccount=0;
+void history();
+void pcheck(string pstring,string lfind){
+    if(pstring[1]==lfind[1]){
+        cout<<lfind<<"=="<<pstring<<endl;
+        cout<<"I Think god is with your side...You won man"<<endl;
+        history();
+        exit(0);
+    }
+}
+void ccheck(string cstring,string lfind){
+     if(cstring[1]==lfind[1])
+    {
+        cout<<lfind<<"=="<<cstring<<endl;
+        cout<<"I am the God....Ha Ha I the winner....."<<endl;
+        cout<<"Try 2 win me......"<<endl;
+        history();
+        exit(0);
+    }
+    
+}
+void push(string lfind){
+    cout<<"find:"<<"\""<<lfind<<"\""<<endl;
+    ccount++;
+    if(ccount==51){
+        cout<<"(Now i am become Mental)Some thing went wrong"<<endl;
+        exit(0);
+    }
+    if(player.size()==0){
+        cout<<"This is impossible"<<endl;
+        exit(0);
+    }
+    if(com.size()==0){
+        cout<<"Computer Science Miracle"<<endl;
+        exit(0);
+    }
+    int psize=player.size()-1;
+    cout<<"your's:"<<"\""<<player[psize]<<"\""<<endl;
+    hold.push(player[psize]);
+    pcheck(player[psize],lfind);
+    int csize=com.size()-1;
+    cout<<"com's:"<<"\""<<com[csize]<<"\""<<endl;
+    hold.push(com[csize]);
+    ccheck(com[csize],lfind);
+    player.erase(player.begin()+psize);
+    com.erase(com.begin()+csize);
+    cout<<"..................."<<endl;
+}
+void cshuffle(vector<string>& cards){
+//     unsigned seed=rand(); 
+//   shuffle(cards.begin(),cards.end(),default_random_engine(seed)); 
+int n=cards.size();
+for(int i=n-1;i>0;--i){
+    int j=rand()%(i+1);
+    string temp=cards[i];
+    cards[i]=cards[j];
+    cards[j]=temp;
+}
+cout<<"(Changes only never change)->Now cards are shuffled"<<endl;
+}
+void history(){
+    if(hold.empty()){
+        cout<<"You are fearfull guy"<<endl;
+        exit(0);
+    }
+    cout<<"---------------THE END------------------------"<<endl;
+    cout<<"Quick summary of the game:"<<endl;
+    int count=0;
+     while(!hold.empty()){
+        if(count%2==0)
+        {
+            cout<<"Your's:"<<hold.front()<<endl;
+            hold.pop();
+        }
+        else{
+            cout<<"com's:"<<hold.front()<<endl;
+            hold.pop();
+        }
+        count++;
+     }
+    
+    cout<<"\n";
+}
+int main()
+{
+    cout<<"Welcome to ULLA VELIYA Game."<<endl;
+    cout<<"You will get half Deck of Cards to play."<<endl;
+    cout<<"Cards will be Random."<<endl;
+    cout<<"c->CLUB\nd->DIAMOND\nh->HEART\ns->SPADE"<<endl;
+    cout<<"\n";
+    srand(time(NULL));
+    // int temp=ran;
+    for(int i=0;i<26;i++){
+        int ran=rand()%com.size();
+        player.push_back(com[ran]);
+        com.erase(com.begin()+ran);
+        // com.resize(com.size()-1);
+        // ran+=ran;
+        // if(ran>=com.size())
+        // ran=temp;
+    }
+    // cout<<com.size()<<" "<<player.size();
+    // cout<<"\n";
+    int ran1=rand()%com.size();
+    string find=com[ran1];
+    com.erase(com.begin()+ran1);
+    cout<<"This are the cards you have:\n";
+    for(int i=0;i<player.size();i++)
+    cout<<player[i]<<" ";
+    cout<<"\n";
+    cout<<"Now cards will Shuffle"<<endl;
+    cshuffle(player);
+    cout<<"Instruction are over"<<endl;
+    cout<<"->->->->->->->->->->->->->->->"<<endl;
+    cout<<"Let's start the game....";
+    cout<<"you have one card extra because your r human"<<endl;
+    cout<<"This is the card you need to find:"<<"\""<<find<<"\""<<endl;
+    // cout<<com.size()<<""<<player.size();
+    while(1){
+        cout<<"1.Push the card"<<endl;
+        cout<<"2.Shuffle the cards"<<endl;
+        cout<<"3.Quit game"<<endl;
+        label:
+        int choice;
+        cout<<"Pls Enter the choice:";
+        cin>>choice;
+        switch(choice){
+            case 1:
+            push(find);
+            break;
+            case 2:
+            cshuffle(player);
+            break;
+            case 3:
+            history();
+            exit(0);
+            break;
+            default:
+            cout<<"u have extra brain but do not use it here because i can not identify it (only above choice are allowed)"<<endl;
+            goto label;
+        }
+        
+    }
+    
+}
