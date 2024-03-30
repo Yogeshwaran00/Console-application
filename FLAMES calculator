@@ -1,0 +1,142 @@
+FLAMES :
+This program is used to identiy the FLAMES but note that it is not right in real world it just give you the happyness and sadness.....
+............................................................................................................................................................................
+
+#include<iostream>
+using namespace std;
+#include<stdio.h>
+#include <vector>
+#include<string.h>
+void cearse(string &name,int index){//we can use earse(index,1)
+    int i;
+    for(i=index;i<name.length()-1;i++){
+        name[i]=name[i+1];
+    }
+    name[i]='\0';
+    name.resize(name.length()-1);
+}
+bool valueeck(string name,string name1){
+    int value=1;
+    if(name.length()==name1.length()){
+        for(int i=0;i<name.length();i++){
+            if(name[i]==name1[i])
+            value=1;
+            else {
+                value=0;
+                return value;
+            }
+        }
+    }
+    else return 0;
+    return value;
+}
+void valid(string &name,string &name1){
+    if(name.length()==1 || name1.length()==1){
+        cout<<"I know for one man one woman but ur applying here by single letter...(ITS HARD TO FIND)<<\n";
+        cout<<"So oops 404";
+        exit(0);
+    }
+    for(int i=0;i<name.length();i++){
+        if(name[i]>=65 && name[i]<=90){
+            name[i]+=32;
+        }
+        else if(name[i]>=97 && name[i]<=122){
+            continue;
+        }
+        else{
+            cout<<name<<":"<<"I have only knowlegde to access words(LOL:Instagram id's are not allowed)";
+            cout<<"\n"<<"In your name, number are there it is not valid.";
+            exit(0);
+            
+        }
+    }
+    for(int i=0;i<name1.length();i++){
+        if(name1[i]>=65 && name1[i]<=90){
+             name1[i]+=32;
+        }
+        else if(name1[i]>=97 && name1[i]<=122){
+            continue;
+        }
+        else{
+            cout<<name1<<":"<<"I have only knowlegde to access words(LOL:Instagram id's are not allowed)";
+            cout<<"\n"<<"In your name, number are there it is not valid.";
+            exit(0);
+            
+        }
+    }
+    // return 1;
+}
+int main(){
+    string name;
+    string name2;
+    cout<<"Enter your Name:";
+    cin>>name;
+    // vector<valuear> name3(name.begin(),name.end());
+    cout<<"Enter your Partner Name:";
+    cin>>name2;
+    valid(name,name2);
+    if(valueeck(name,name2)==1){
+        cout<<"\"Self love is Good but here it is not Good(ha ha ha)"<<endl;
+        cout<<"OR"<<endl;
+        cout<<"LOL I know this is 2K but here HOMOsexual is not allowed"<<endl;
+        cout<<"Try to correct Nxt time my valueild\"";
+        exit(0);
+    }
+    // vector<valuear> name4(name2.begin(),name2.end());
+    cout<<"Pray to good to get your expected answer....\n";
+    for(int i=0;i<name.length();i++){
+        for(int j=0;j<name2.length();j++){
+            if(name[i]==name2[j]){
+                cearse(name,i);
+                cearse(name2,j);
+                --i;
+                break;
+            }
+        }  
+    }
+    int value=name.length()+name2.length();
+    // cout<<value<<endl;
+    cout<<"Result is(HeartBeat Raised moment):";
+    int dummy=0;
+    string ans="FLAMES";
+    if(value==0){
+        cout<<"Sry there is not different letters in your name with out this we can find the FLAMES...(may be add your surename) to calculate"<<"\n";
+    }
+    else{
+        if(value==3||value==5||value==14||value==16||value==18||value==21||value==23){
+			printf("Girls famous dialogue...Let's be FRIENDs\n");
+			return 0;
+        }
+		else if(value==10||value==19){
+			printf("Start 2 do : Lover\n I guess your are the happiest human in the world right now\n");
+			return 0;
+		}
+		else if(value==8||value==12||value==13||value==17||value==28){
+			printf("Some Feeling is calles as Attraction\n");
+		    return 0;
+		}
+		else if(value==6||value==11||value==15||value==26){
+			printf("Book your iyer right now : Marriage(u have special mole in your body)\n");
+		    return 0;
+		}
+		else if(value==2||value==4||value==7||value==9||value==20||value==22||value==24||value==25){
+			printf("Go and Do some other work : Enemy\n"); 
+			cout<<"Start and search Other one(HA ha ha )";
+		    return 0;
+		}
+		else if(value==1||value==27){
+			printf("I think your an Indian because all r my brother and SISTER's\n"); 
+		    return 0;
+		}
+    
+    }
+    // cout<<ans;
+}
+
+
+
+
+
+
+
+
