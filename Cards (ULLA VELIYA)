@@ -5,6 +5,9 @@ This is game is based on cards. it's a local game(ULLA VELIYA).
 #include<time.h>
 #include<vector>
 #include<algorithm>
+#include <thread> 
+#include <cstdlib>
+#include <ctime>
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -75,6 +78,7 @@ for(int i=n-1;i>0;--i){
 cout<<"(Changes only never change)->Now cards are shuffled"<<endl;
 }
 void history(){
+    this_thread::sleep_for(chrono::milliseconds(2000));
     if(hold.empty()){
         cout<<"You are fearfull guy"<<endl;
         exit(0);
