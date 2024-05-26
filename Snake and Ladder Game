@@ -1,3 +1,6 @@
+This is game is based on cards. it's a local game(ULLA VELIYA).
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #include<iostream>
 #include<vector>
 using namespace std;
