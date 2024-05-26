@@ -1,4 +1,4 @@
-This is game is based on cards. it's a local game(ULLA VELIYA).
+This is game is basically Snake and Ladder Game.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #include<iostream>
