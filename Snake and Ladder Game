@@ -1,0 +1,254 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+vector<int>score;
+int curr=0;
+void info(){
+    cout<<"------------------------------------------"<<endl;
+    cout<<"These position you have snake and ladder in this game"<<endl;
+    cout<<"Snake are in this position:32-to-10 || 34-to-6 || 48-to-26 || 62-to-18 || 88-to-24 || 95-to-56 || 97-to-78"<<endl;
+    cout<<"Laddder are in this position:1-to-38 || 4-to-14 || 8-to-30 || 21-to-42 || 28-to-76 || 50-to-67 || 71-to-92 || 80-to-99"<<endl;
+    cout<<"------------------------------------------"<<endl;
+}
+void dice(){
+    srand(time(0));
+    int temp=(rand()%6)+1; 
+    cout<<"By thrown dice you got '"<<temp<<"'"<<endl;
+    int prev=curr;
+    if(curr+temp>100){
+        cout<<"Not this time...do not loose the hope try again....."<<endl;
+        return ;
+    }
+    curr+=temp;
+    if(curr==100){
+        cout<<"FINALLY:This is not your dream->YOU WON BRUH.....boooooom"<<endl;
+        exit(0);
+    }
+    if(curr==32 || curr==34 || curr== 48 || curr==62 || curr==88 || curr==95 ||curr==97){
+        cout<<"oh ho how was snake poison?"<<endl;
+        cout<<"Shhhhhhhhhhhhh"<<endl;
+        if(curr==32)curr-=22;
+        if(curr==34)curr-=28;
+        if(curr==48)curr-=22;
+        if(curr==62)curr-=44;
+        if(curr==88){
+            curr-=67;
+            cout<<"Do not worry it is the largest snake shhhhhhhhhhh"<<endl;
+        }
+        if(curr==95)curr-=39;
+        if(curr==97)curr-=19;
+    }
+    
+    if(curr==1 || curr==4 || curr== 8 || curr==21 || curr==28 || curr==50 ||curr==71 || curr==80){
+        cout<<"Ladder time"<<endl;
+        cout<<"Go high @ least here"<<endl;
+        if(curr==1)curr+=37;
+        if(curr==4)curr+=10;
+        if(curr==8)curr+=22;
+        if(curr==21)curr+=21;
+        if(curr==28){
+            curr+=48;
+            cout<<"I think god besides you....check it ...."<<endl;
+            cout<<"This is the longest ladder in the game"<<endl;
+        }
+        if(curr==50)curr+=17;
+        if(curr==71)curr+=21;
+        if(curr==80){
+            curr+=29;
+            cout<<"Just one step ahead......"<<endl;
+        }
+    }
+    
+    cout<<"Dice thrown and moved from "<<prev<<" to "<<curr<<endl;
+    cout<<"------------------------------------"<<endl;
+    cout<<"\n";
+}
+void display(){
+    if(curr==0){
+        cout<<"Not yet started human"<<endl;
+        cout<<"\n";
+        return ;
+    }
+    cout<<"you are here human '"<<curr<<"'"<<endl;
+    cout<<"\n";
+}
+void matrix(){
+    if(curr==0){
+        cout<<"Still trail's itself happend"<<endl;
+        return ;
+    }
+    int i;
+    for(i=100;i>=91;i--){
+        if(i==curr){
+            cout<<"& ";
+            continue;
+        }
+        if(i==99){
+            cout<<"l9 ";
+            continue;
+        }
+        if(i==97){
+            cout<<"S8 ";
+            continue;
+        }
+        if(i==97){
+            cout<<"S8 ";
+            continue;
+        }
+        cout<<i<<" ";
+    }
+    cout<<endl;
+    
+}
+void displaymatrix(){
+    cout<<"------------------------------------"<<endl;
+    cout<<"Ladder is /-/"<<endl;
+    cout<<"Snake is _/`"<<endl;
+    cout<<"You is @"<<endl;
+    cout<<"------------------------------------"<<endl;
+    int temp=curr; 
+    if(temp==0){
+        cout<<"(Important):The Game is not yet started(Due to u lol)"<<endl;
+        cout<<"\n";
+    }
+    int j=100;
+    int k=81;
+  for(int i=0;i<10;i++){
+      if(i%2==0){
+          int count=0;
+          for(;;j--){
+              if(count==10)break;
+               if(j==temp){
+                cout<<"@"<<" ";
+                count++;
+                continue;
+                }
+              if(j==1 || j==4 || j== 8 || j==21 || j==28 || j==50 ||j==71 || j==80){
+                    cout<<"/-/"<<" ";
+                    count++;
+                    continue;
+                }
+            if(j==32 || j==34 || j== 48 || j==62 || j==88 || j==95 ||j==97){
+                cout<<"_/`"<<" ";
+                count++;
+                continue;
+            }
+              cout<<j<<" ";
+              count++;
+          }
+          cout<<endl;
+          j-=10;
+      }
+      else{
+          int count=0;
+          for(;;k++){
+              if(count==10)break;
+              if(k>=1 && k<=10){
+                if(k==temp){
+                    cout<<"@"<<" ";
+                    count++;
+                    continue;
+                }
+                  if(k==1 || k==4 || k==8){
+                    cout<<"/-/"<<" ";
+                    count++;
+                    continue;
+                    }
+                  cout<<k<<" "<<" ";
+                  count++;
+                  continue;
+              }
+                if(k==temp){
+                    cout<<"@"<<" ";
+                    count++;
+                    continue;
+                }
+              if(k==21 || k==28 || k==50 ||k==71 || k==80){
+                  cout<<"/-/"<<" ";
+                    count++;
+                    continue;
+              }
+               if(k==32 || k==34 || k== 48 || k==62 || k==88 || k==95 ||k==97){
+                cout<<"_/`"<<" ";
+                count++;
+                continue;
+                }
+              cout<<k<<" ";
+              count++;
+          }
+          count=0;
+          cout<<endl;
+          k-=30;
+      }
+}
+        cout<<"\n";
+    cout<<"------------------------------------"<<endl;
+}
+int main(){
+    cout<<"Welcome to the snake and ladder game"<<endl;
+    cout<<"You have two option one is throw the dice and other is you can view the current position in matrix format"<<endl;
+    cout<<"Throwing dice is random"<<endl;
+    info();
+    cout<<"Let's play"<<endl;
+    while(1){
+       label1:
+       cout<<"1.Throw the dice"<<endl;
+       cout<<"2.Current location"<<endl;
+       cout<<"3.Display the game in matrix format"<<endl;
+       cout<<"4.Info game "<<endl;
+       cout<<"5.Quit game"<<endl;
+       cout<<"------------------------------------"<<endl;
+       int temp;
+       label3:
+       cout<<"Enter the number you want:";
+       cin>>temp;
+       if(temp)
+       switch(temp){
+            case 1:
+            cout<<"You entered the 1 so you can throw the dice"<<endl;
+            dice();
+            break;
+            case 2:
+            display();
+            break;
+            case 3:
+            displaymatrix();
+            break;
+            case 4:
+            info();
+            break;
+            case 5:
+            cout<<"You wished to leave the game pls entered the conformation(if you enter '1' the you are out of the game if '1-1' means still in the game :)"<<endl;
+            label2:
+            cout<<"Enter the number:";
+            int a;
+            cin>>a;
+            if(a==0){
+                cout<<"Alived by 1%(Edge moment)"<<endl;
+                cout<<"------------------------------------"<<endl;
+                goto label1;
+            }
+            else if(a==1){
+                cout<<"Bye....."<<endl;
+                exit(0);
+            }
+            else{
+                cout<<"Enter only 1 or 0"<<endl;
+                goto label2;
+            }
+            break;
+            default:
+            cout<<"My brain can't understand only above numbers i can understand(you understand lol)"<<endl;
+            goto label3;
+            cout<<"------------------------------------"<<endl;
+            break;
+       }
+    }
+}
+
+
+
+
+
+
+
