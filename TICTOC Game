@@ -160,6 +160,7 @@ int main()
     while(1){//Learn this while part here chatgpt gave super code...
         if(hold.size()==9){
             // check();
+            cout<<"Lets shake the hands(DRAW)"<<endl;
             exit(0);
         }
         int s;
