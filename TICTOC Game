@@ -1,0 +1,184 @@
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include<cstdlib>
+#include<vector>
+#include<set>
+#include<algorithm>
+#include<unordered_map>
+#include<ctime>
+using namespace std;
+vector<vector<char>>tictoc(3,vector<char>(3,' '));//first 3 is how many vector's and next is one vector holds how many
+bool inc;
+char p1,p2;
+void display(){
+    cout<<"---------------"<<endl;
+    cout<<"\"Display time\":"<<"\n";
+    if(inc){
+    for(int i=0;i<tictoc.size();i++){
+        for(int j=0;j<tictoc[0].size();j++){
+            cout<<tictoc[i][j]<<"|";
+        }
+        cout<<endl;
+    }
+    }
+    else{
+        int temp=1;
+        cout<<"\"Board was Empty\""<<endl;
+        for(int i=0;i<tictoc.size();i++){
+        for(int j=0;j<tictoc[0].size();j++){
+            if(tictoc[i][j]==1){
+                cout<<temp<<"|";
+            }
+            else{
+                cout<<temp<<"|";
+            }
+        temp++;
+        }
+        cout<<endl;
+    }
+    inc=1;
+    }
+    cout<<"---------------"<<endl;
+}
+void winner(int i,int j,int cp){
+    cout<<"HAHA BATTLE IS OVER"<<endl;
+    cout<<"HERO IS "<<"\""<<tictoc[i][j]<<"\""<<endl;
+    if(cp==0){
+        cout<<"WHICH MEANS WINNER IS-> P1"<<endl;
+        cout<<"NOW YOUR ARE GOING 2 JAIL BECAUSE YOU KILLED P2 LOL... THIS IS JOKE"<<endl;
+    }
+    else {
+        cout<<"WHICH MEANS WINNER IS-> P2"<<endl;
+        cout<<"P1 @ THE CORNER CRYING...."<<endl;
+    }
+    cout<<"See you in the next Game"<<"(Husky Voice) Bye..."<<endl;
+    exit(0);
+}
+void check(int cp){
+    display();
+    if(tictoc[0][0]==tictoc[0][1] && tictoc[0][1]==tictoc[0][2] && tictoc[0][0]!=' ') {
+        winner(0,0,cp);
+    } 
+    else if(tictoc[1][0]==tictoc[1][1] && tictoc[1][1]==tictoc[1][2] && tictoc[1][0]!=' ') {
+        winner(1,0,cp);
+    } 
+    else if(tictoc[2][0]==tictoc[2][1] && tictoc[2][1]==tictoc[2][2] && tictoc[2][0]!=' ') {
+        winner(2,0,cp);
+    } 
+    else if(tictoc[0][0]==tictoc[1][0] && tictoc[1][0]==tictoc[2][0] && tictoc[0][0]!=' ') {
+        winner(0,0,cp);
+    } 
+    else if(tictoc[0][1]==tictoc[1][1] && tictoc[1][1]==tictoc[2][1] && tictoc[0][1]!=' ') {
+        winner(0,1,cp);
+    } 
+    else if(tictoc[0][2]==tictoc[1][2] && tictoc[1][2]==tictoc[2][2] && tictoc[0][2]!=' ') {
+        winner(0,2,cp);
+    } 
+    else if(tictoc[0][0]==tictoc[1][1] && tictoc[1][1]==tictoc[2][2] && tictoc[0][0]!=' ') {
+        winner(0,0,cp);
+    } 
+    else if(tictoc[0][2]==tictoc[1][1] && tictoc[1][1]==tictoc[2][0] && tictoc[0][2]!=' ') {
+        winner(0,2,cp);
+    } 
+    else {
+        return;
+    }
+}
+void defaultc(){
+     cout<<"Let's Fix it by(Nation game-Toss)"<<endl;
+    srand(time(0));
+    int temp=rand()%2+1;
+    if(temp==1){
+        p1='x';
+        p2='o';
+        cout<<"Coin in air after sec.... one side is hidden to the world"<<endl;
+        cout<<"Player one is "<<p1<<" "<<"Player two is "<<p2<<endl;
+    }
+    else{
+        p1='o';
+        p2='x';
+        cout<<"Coin breaked the Gravity....but Gravity wins!!! and Now"<<endl;
+        cout<<"Player one is "<<p1<<" "<<"Player two is "<<p2<<endl;
+    }
+}
+void custom(){
+    cout<<"you selected Custom option"<<endl;
+    cout<<"First Player now:";
+    cin>>p1;
+    cout<<"Second Player now:";
+    cin>>p2;
+    if(p1>=65 && p1<=90){
+        p1+=32;
+    }
+    if(p2>=65 && p2<=90){
+        p2+=32;
+    }
+    // cout<<endl;
+    if(!((p1=='x'||p1=='o')&&(p2=='x'||p2=='o'))){
+        cout<<"Out of contest so i am using my brain which is default selection"<<endl;
+        defaultc();
+        return ;
+    }
+    if(p1==p2){ 
+        cout<<"I think your knowledge is this much let it be..."<<endl;
+        defaultc();
+        return ;
+    }
+    cout<<"Players are ready....."<<endl;
+    cout<<"p1 is:"<<p1<<endl<<"p2 is:"<<p2<<endl<<"lets start the Game..."<<endl;
+}
+int main()
+{
+    int cord;
+    cout<<"Custom choice or default?"<<endl;
+    cout<<"Custom-1\nDefault-0"<<endl;
+    cout<<"Enter The number that click in the mind:";
+    cin>>cord;
+    if(cord!=0 && cord!=1){
+        cout<<"Pls read above instruction's first(I am angry bye....)"<<endl;
+        return 0;
+    }
+    if(cord){
+        custom();
+    }
+    else{
+        defaultc();
+    }
+    display();
+    bool now;
+    cout<<"Number showing in the board is the Index of the position,just player can type the Index it automaticaly added"<<endl;
+    cout<<"You can not overwrite in one position"<<endl;
+    set<int>hold;
+    unordered_map<int,pair<int,int>>map{{1,{0,0}},{2,{0,1}},{3,{0,2}},{4,{1,0}},{5,{1,1}},{6,{1,2}},{7,{2,0}},{8,{2,1}},{9,{2,2}}};
+    while(1){//Learn this while part here chatgpt gave super code...
+        if(hold.size()==9){
+            // check();
+            exit(0);
+        }
+        int s;
+        if(now){
+            cout<<"Now it's p2's turn:";
+        }
+        else{
+            cout<<"Now it's p1's turn:";
+        }
+        cin>>s;
+        while(s<1 || s>9 || !hold.insert(s).second){
+            cout<<"Cannot overwrite...Enter again:";
+            cin>>s;
+        }
+        if(now){
+            //p2;
+            tictoc[map[s].first][map[s].second]=p2;
+        }
+        else{
+            //p1;
+            tictoc[map[s].first][map[s].second]=p1;
+        }
+        check(now);
+        now=!now;
+    }
+}
