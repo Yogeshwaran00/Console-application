@@ -133,6 +133,9 @@ void custom(){
 }
 int main()
 {
+    cout<<"Welcome to TICTOC Game"<<endl;
+    cout<<"My side ready....."<<endl;
+    cout<<"Pls select custom or default for player's role in this game;
     int cord;
     cout<<"Custom choice or default?"<<endl;
     cout<<"Custom-1\nDefault-0"<<endl;
