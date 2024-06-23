@@ -1,5 +1,6 @@
+My aim is to create tictoc game in console-application but the starting stage i did not know how to implement this so i learned and developed some games first and now i developed this game itself.
 
-
+TICTOC Game in cpp
 
 ----------------------------------------------------------------------------------------------------------------------
 #include <iostream>
