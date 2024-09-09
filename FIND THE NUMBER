@@ -1,0 +1,85 @@
+This is game is based on find the number from 1-100.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include<iostream>
+#include<vector>
+#include<cstdlib>
+using namespace std;
+void Print(vector<int>&path,int findnum){
+    cout<<"Guess number is :"<<findnum<<endl;
+    cout<<"This is the path you come across:"<<endl;
+    for(int i=0;i<path.size();i++){
+        cout<<i<<":"<<path[i]<<endl;
+    }
+}
+int main(){
+    srand(time(0));
+    int findnum=(rand()%100)+1;
+    static int count=0;
+    vector<int>path;
+    // cout<<"-------------------------------------------------------"<<endl;
+    // cout<<"low means nearest distance b/w your number and my number"<<endl;
+    // cout<<"Very low means vast distance b/w your number and my number"<<endl;
+    // cout<<"high means your number is little bit high with my number"<<endl;
+    // cout<<"Very high means your number is greater than my number"<<endl;
+    // cout<<"-------------------------------------------------------"<<endl<<endl;
+    
+    cout<<"I LOCKED THE NUMBER...COME FIND ME"<<endl;
+    cout<<"Guess the number from 1 to 100:"<<endl;
+    while(1){
+        cout<<"Enter the number:";
+        int usernum;
+        cin>>usernum;
+        path.push_back(usernum);
+        if(usernum==findnum){
+            if(count<6){
+                cout<<"-------------------------------------------------------"<<endl;
+                cout<<"Wow you found me very soon good to go"<<endl;
+            }
+            else if(count>=6 && count<=11){
+                cout<<"-------------------------------------------------------"<<endl;
+                cout<<"Good Try but try to find me very soon"<<endl;
+            }
+            else {
+                cout<<"-------------------------------------------------------"<<endl;
+                cout<<"I AM OUT BUT I think you are unlucky person Even here you took many count"<<endl;
+            }
+            Print(path,findnum);
+            bool again;
+            cout<<"-------------------------------------------------------"<<endl;
+            cout<<"Play again? Enter 1 for yes, 0 for no: ";
+            cin>>again;
+            if(again){
+                count=0;
+                findnum=(rand()%100)+1;
+                path.clear();
+                cout << "Guess the number from 1 to 100:"<<endl;
+                continue;
+            }
+            else exit(0);
+        }
+        else{
+            int diff=findnum-usernum;
+            if(diff<0){
+                if(diff+5>=0){
+                    cout<<"YOU ARE SOME WHAT HIGH LESS IT"<<endl;
+                }
+                else if(diff+10>=0){
+                    cout<<"YOU ARE HIGH...LESS THE NUMBER"<<endl;
+                }
+                else cout<<"YOU ARE TOO FAR AWAY FROM ME LESS IT AND GUESS IT "<<endl;
+            }
+            else{
+                if(diff<6){
+                    cout<<"YOU ARE TOO CLOSE MAN JUST ADD ONE SPOON OF NUMBER"<<endl;
+                }
+                else if(diff>=6 && diff<=10){
+                    cout<<"U R TRYING TO FIND ME BUT ADD MORE NUMBERS FROM YOUR NUMBER..."<<endl;
+                }
+                else cout<<"U R NEED TO ADD MORE NUMBERS ON ME MAN (ADD GREATER THAN 10)"<<endl;
+            }
+            
+        }
+        count++;
+    }
+}
